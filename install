@@ -2,7 +2,6 @@
 
 use Cpanel::Version ();
 use Cpanel::Locale::Utils::3rdparty ();
-use Cpan;
 
 if ( $Cpanel::Version::MAJORVERSION < 11.40 ) {
     print "This addon requires 11.40 or later.\n";
