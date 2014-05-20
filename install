@@ -11,7 +11,7 @@ if ( $Cpanel::Version::MAJORVERSION < 11.40 ) {
 
 mkdir( "/var/cpanel/apps", 0755 );
 
-system "PERL_MM_USE_DEFAULT=1 perl -MCPAN -e 'install YAML::Syck";
+system "PERL_MM_USE_DEFAULT=1; perl -MCPAN -e 'YAML::Syck'";
 
 system '/usr/bin/rsync', '-rlptD', 'Cpanel/', '/usr/local/cpanel/Cpanel/';
 system '/usr/bin/rsync', '-rlptD', 'base/', '/usr/local/cpanel/base/';

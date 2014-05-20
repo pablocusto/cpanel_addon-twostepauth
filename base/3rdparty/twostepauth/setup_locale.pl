@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/local/cpanel/3rdparty/bin/perl
 use strict;
 use Fcntl			();
 use YAML::Syck		();
