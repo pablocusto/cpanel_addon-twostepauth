@@ -47,8 +47,6 @@ chomp $myv;
 
 defheader("cPanel Two Step Auth - twostepauth v$myv" );
 
-print "<TITLE>ConfigServer ModSecurity Control</TITLE>";
-
 %FORM = Cpanel::Form::parseform();
 
 if ($FORM{action} eq "upgrade") {
