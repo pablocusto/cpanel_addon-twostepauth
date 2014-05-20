@@ -16,7 +16,7 @@ system '/usr/bin/rsync', '-rlptD', 'whostmgr/', '/usr/local/cpanel/whostmgr/';
 install( "-o", "root", "-g", "wheel", "-m" . "0600", "icon/ico-twostepauth.jpg", "/usr/local/cpanel/whostmgr/docroot/addon_plugins/ico-twostepauth.jpg" );
 
 print "Registering Locales\n";
-system 'perl /usr/local/cpanel/base/3rdparty/twostepauth/add_lang_keys.pl >/dev/null 2>&1';
+system 'perl /usr/local/cpanel/base/3rdparty/twostepauth/setup_locale.pl >/dev/null 2>&1';
 system '/usr/local/cpanel/bin/build_locale_databases >/dev/null';
 
 print "Registering Plugin\n";
