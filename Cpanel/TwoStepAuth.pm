@@ -26,7 +26,7 @@ sub TwoStepAuth_init {
       my $conf = { 'enabled' => 0, 'salt' => Cpanel::Rand::getranddata(32) };
       Cpanel::TwoStepAuth::Utils::flushConfig($conf, $settings_file);
       chmod 0600, $settings_file;
-      ($login,$pass,$uid,$gid) = getpwnam($Cpanel::user)
+      my ($login,$pass,$uid,$gid) = getpwnam($Cpanel::user)
 	or die "$Cpanel::user not in passwd file";
       chown $uid, $gid, $settings_file;
   }
