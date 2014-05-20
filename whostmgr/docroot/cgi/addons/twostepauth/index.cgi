@@ -26,7 +26,7 @@ $| = 1;
 print "Content-type: text/html\r\n\r\n";
 
 if (!Whostmgr::ACLS::hasroot()) {
-	print "You do not have access to cPanel Linux Malware Detect.\n";
+	print "You do not have access to Two Step Auth Admin.\n";
 	exit();
 }
 
