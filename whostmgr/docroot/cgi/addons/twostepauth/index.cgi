@@ -89,7 +89,7 @@ else {
 
 ###############################################################################
 sub index_page {
-	my ($status, $text) = &urlget("https://raw.githubusercontent.com/steadramon/cpanel_addon-twostepauth/master/version.txt");
+	my ($status, $text) = &urlget("https://raw.githubusercontent.com/steadramon/cpanel_addon-twostepauth/master/base/3rdparty/twostepauth/version.txt");
 	my $actv = $text;
 	chomp $actv;
 
