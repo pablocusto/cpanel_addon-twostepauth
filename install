@@ -2,6 +2,7 @@
 
 use Cpanel::Version ();
 use Cpanel::Locale::Utils::3rdparty ();
+use Cpan;
 
 if ( $Cpanel::Version::MAJORVERSION < 11.40 ) {
     print "This addon requires 11.40 or later.\n";
@@ -10,9 +11,12 @@ if ( $Cpanel::Version::MAJORVERSION < 11.40 ) {
 
 mkdir( "/var/cpanel/apps", 0755 );
 
+system "PERL_MM_USE_DEFAULT=1 perl -MCPAN -e 'install YAML::Syck";
+
 system '/usr/bin/rsync', '-rlptD', 'Cpanel/', '/usr/local/cpanel/Cpanel/';
-system '/usr/bin/rsync', '-rlptD --update', 'base/', '/usr/local/cpanel/base/';
+system '/usr/bin/rsync', '-rlptD', 'base/', '/usr/local/cpanel/base/';
 system '/usr/bin/rsync', '-rlptD', 'whostmgr/', '/usr/local/cpanel/whostmgr/';
+system 'echo -n "policy=0" > /usr/local/cpanel/base/3rdparty/twostepauth/twostepauth.conf' if !-e "/usr/local/cpanel/base/3rdparty/twostepauth/twostepauth.conf";
 install( "-o", "root", "-g", "wheel", "-m" . "0600", "icon/ico-twostepauth.jpg", "/usr/local/cpanel/whostmgr/docroot/addon_plugins/ico-twostepauth.jpg" );
 
 print "Registering Locales\n";
