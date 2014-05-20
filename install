@@ -19,7 +19,7 @@ system 'echo -n "policy=0" > /usr/local/cpanel/base/3rdparty/twostepauth/twostep
 install( "-o", "root", "-g", "wheel", "-m" . "0600", "icon/ico-twostepauth.jpg", "/usr/local/cpanel/whostmgr/docroot/addon_plugins/ico-twostepauth.jpg" );
 
 print "Registering Locales\n";
-system 'perl /usr/local/cpanel/base/3rdparty/twostepauth/setup_locale.pl >/dev/null 2>&1';
+system '/usr/local/cpanel/base/3rdparty/twostepauth/setup_locale.pl >/dev/null 2>&1';
 system '/usr/local/cpanel/bin/build_locale_databases >/dev/null';
 
 print "Registering Plugin\n";
