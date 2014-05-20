@@ -1,0 +1,27 @@
+#!/usr/local/cpanel/3rdparty/bin/perl
+
+use Cpanel::Version ();
+
+unlink("/usr/local/cpanel/whostmgr/docroot/addon_plugins/ico-twostepauth.jpg");
+
+print "Removing policy\n";
+system 'sed -ie "s/SecurityPolicy::TwoStepAuth=1/SecurityPolicy::TwoStepAuth=0/" /var/cpanel/cpanel.config';
+print "Unregistering Plugin\n";
+system '/usr/local/cpanel/bin/unregister_cpanelplugin /usr/local/cpanel/base/3rdparty/twostepauth/twostepauth.cpanelplugin';
+system '/usr/local/cpanel/whostmgr/bin/whostmgr2 --updatetweaksettings >/dev/null 2>&1';
+
+print "Unregistering WHM Plugin\n";
+system '/usr/local/cpanel/bin/unregister_appconfig base/3rdparty/twostepauth/addon_twostepauth.conf';
+
+system "/bin/rm", "-rf", "--", "/usr/local/cpanel/whostmgr/docroot/cgi/addons/twostepauth";
+system "/bin/rm", "-rf", "--", "/usr/local/cpanel/Cpanel/TwoStepAuth";
+system "/bin/rm", "-rf", "--", "/usr/local/cpanel/Cpanel/Security/Policy/TwoStepAuth";
+system "/bin/rm", "-rf", "--", "/usr/local/cpanel/base/3rdparty/twostepauth";
+system "/bin/rm", "-rf", "--", "/usr/local/cpanel/base/securitypolicy/TwoStepAuth";
+system "/bin/rm", "-rf", "--", "/usr/local/cpanel/base/frontend/x3/twostepauth";
+unlink("/var/cpanel/Cpanel/Security/Policy/TwoStepAuth.pm");
+unlink("/var/cpanel/Cpanel/TwoStepAuth.pm");
+
+print "Fin\n\n";
+
+exit(0);
