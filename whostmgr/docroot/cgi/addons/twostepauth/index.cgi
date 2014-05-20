@@ -111,7 +111,7 @@ sub index_page {
 my $HTML=<<HTML;
 <table width="95%" align="center" class="sortable">
 	<tbody>
-		<tr><th align="left" colspan="2">cPanel Two Step Auth Control (<u><a href="index.cgi?action=help">Help</a></u>)</th></tr>
+		<tr><th align="left" colspan="2">cPanel Two Step Auth Control <!--(<u><a href="index.cgi?action=help">Help</a></u>)--></th></tr>
 		<tr class="tdshade1"><td><form method="post" action="index.cgi"><input type="hidden" value="config" name="action"><input type="submit" value="Config" class="input"></form></td><td width="100%">You can enable and configure Two Step Auth</td></tr>
 		<!--<tr class="tdshade2"><td><form method="post" action="index.cgi"><input type="hidden" value="users" name="action"><input type="submit" value="User Setup" class="input"></form></td><td width="100%">You can enable/disable for users</td></tr>-->
 	</tbody>
