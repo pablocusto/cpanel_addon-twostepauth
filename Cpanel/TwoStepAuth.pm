@@ -73,13 +73,11 @@ sub TwoStepAuth_show_form {
   } else {
     return;
   }
-  $extra = TwoStepAuth_registration_qr();
 
   my $form =<<EOF;
 <form method="POST">
 <h2>$active</h2>
-<br>
-$extra
+</form>
 EOF
   print $form;
   return;
@@ -100,6 +98,16 @@ my $HTML=<<HTML;
 	</div>
 HTML
 print $HTML;
+}
+
+sub TwoStepAuth_qr_text {
+      my $config = Cpanel::TwoStepAuth::Utils::load_Config($users_dir . 'conf');
+      my $hash = md5_hex($config->{'salt'} . $Cpanel::user);
+      my $hostname = Cpanel::Hostname::gethostname();
+      my $cmd = "/usr/local/cpanel/base/3rdparty/twostepauth/gauth.php -c=qr_text -t='cPanel $Cpanel::user $hostname' -p=$hash";
+      my $out = `$cmd`;
+      print $out;
+      return;
 }
 
 sub TwoStepAuth_registration_qr {

@@ -28,4 +28,7 @@ switch ($options['c']) {
 			echo "false";
 		}
 		break;
+	case "qr_text":
+		echo $ga->getURI($options['t'], $options['p']);
+		break;
 }
