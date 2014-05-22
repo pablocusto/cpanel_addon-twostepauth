@@ -24,8 +24,10 @@ switch ($options['c']) {
 	case "verify":
 		if ($ga->verifyCode($options['p'], $options['v'], 1)) {
 			echo "true";
+			exit(0);
 		} else {
 			echo "false";
+			exit(255);
 		}
 		break;
 	case "qr_text":
