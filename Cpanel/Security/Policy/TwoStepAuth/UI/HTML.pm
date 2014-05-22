@@ -71,10 +71,9 @@ sub process {
       if ($user_conf->{'salt'}) {
         my $hash = md5_hex($user_conf->{'salt'} . $user);
 
-	my $cmd = "/usr/local/cpanel/base/3rdparty/twostepauth/gauth.php -c=verify -p=$hash -v=$cp_verify";
-
-        my $out = `$cmd`;
-        if($out =~ /true/i) {
+        my @cmd = ("/usr/local/cpanel/base/3rdparty/twostepauth/gauth.php", "-c=verify", "-p=$hash", "-v=$cp_verify");
+        my $out = system(@cmd);
+        if($out =~ /^0$/i) {
 
 	  my $cpsession = md5_hex($ENV{'cp_security_token'});
 
