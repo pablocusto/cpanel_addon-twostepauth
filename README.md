@@ -9,3 +9,5 @@ Install:
 * git clone https://git hub.com/steadramon/cpanel_addon-twostepauth.git
 * cd cpanel_addon-twostepauth
 * ./install
+* Enable Security Policy in WHM » Home » Security Center » Configure Security Policies
+* Enable plugin at WHM » Home » Plugins » cPanel Two Step Auth
