@@ -1,20 +1,65 @@
-<div class="body-content">
-<center>
-  <h3>[% locale.maketext("TwoStepAuth_authentication") %]</h3>
-  <div id="login-status" class="error-notice" style="display:none;width:300px!important;padding:5px 5px 8px 5px!important;margin:0 0 10px 0">
-    <span class="login-status-icon"></span>
-    <div id="login-status-message">[% cp_error %]</div>
+<div id="login-container" class="body-content">
+  <div class="login-status-container">
+    <div id="login-status" class="error-notice" style="display: none;">
+      <span class="login-status-icon"></span>
+      <div id="login-status-message">[% cp_error %]</div>
+    </div>
   </div>
-  <script type="text/javascript">
-    if("[% cp_error %]" != "") {
-      document.getElementById("login-status").style.display = "";
-    } else {
-      document.write("<br/>");
-    }
-  </script>
-  <form method="POST" action="[% cp_security_token %]/">
-	<input type="text" name="cp_verify">
-    <input type='submit' name='cp_auth' value='[% locale.maketext("TwoStepAuth_authenticate") %]'>
-  </form>
-</center>
+  <div id="login-sub-container">
+    <div id="login-sub">
+      <div id="forms">
+        <form method="POST" action="[% cp_security_token %]/">
+          <div class="input-req-login">
+            <label for="cp_auth">[% locale.maketext("Two Step Auth") %]</label>
+          </div>
+          <div class="input-field-login icon twostepauth-container">
+            <input class="std_textbox" type="text" name="cp_verify">
+          </div>
+          <div class="controls">
+            <div class="login-btn">
+              <input id="cp_auth" type='submit' name='cp_auth' value='[% locale.maketext("Authenticate") %]'>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
+
+<style type="text/css">
+  #login-wrapper {
+     min-height: 450px !important;
+  }
+  #security-sub-container {
+     margin-top: 20px;
+  }
+  .body-content {
+     margin-top: -30px;
+  }
+  .error-notice {
+     position: absolute;
+     width: 365px !important;
+     padding: 7px 5px 6px 5px !important;
+     margin-top: -150px !important;
+     margin-left: -10px !important;
+     text-align: left;
+  }
+  .input-req-login {
+     text-align: left;
+  }
+  .twostepauth-container {
+     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAABBklEQVQ4jWP8//8/AzUBE1VNY2BgYMEmqBSc0P/mzRucmtjZ2Rle71pbiE0Ow4W581ajGPbp4JZCGIaJ/fz5k8G+oLafaBciAz57H6wacYU9VgOVlZUZzs+biNVLDAwMDGHtU/pfvHiBVQ5rpPDy8uIyi4GBgYFBXFwcpxzVY3nUwFEDyQBYc8rr168Zqlbv6Ofj48Oq6dq1a6QZ+PTpU4YpU6YwMDAwMCgoKDDk5OR83bRpE/ehQ4fgagwMDLAaiOFlFhZUO9TU1BjSTDVqnJycUMRZWVmxGsiIrdSwzCrvv3r1KtwCNTU1hqdPnzJ8/PiRgYGBgYGfn5/h8aalWAsPrAZSAgATcFHlK2tNGgAAAABJRU5ErkJggg==');
+  }
+  .std_textbox {
+    font-size: 18px !important;
+    height: 21px !important;
+  }
+</style>
+
+<script type="text/javascript">
+   if("[% cp_error %]" != "") {
+      document.getElementById("login-status").style.display = "";
+   } else {
+      document.write("<br/>");
+   }
+</script>
